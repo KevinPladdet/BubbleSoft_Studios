@@ -237,6 +237,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Germ
       objectReference: {fileID: 0}
+    - target: {fileID: 6060670078021133465, guid: adce20a30fdb34ddca52a398028bd268, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6060670078021133465, guid: adce20a30fdb34ddca52a398028bd268, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6060670078021133465, guid: adce20a30fdb34ddca52a398028bd268, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6060670078021133465, guid: adce20a30fdb34ddca52a398028bd268, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7499031151519328550, guid: adce20a30fdb34ddca52a398028bd268, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

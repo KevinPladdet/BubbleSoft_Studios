@@ -7,15 +7,17 @@ public class Bullet : MonoBehaviour
     public Vector3 direction;
     public float angle;
     public float velocity;
-    //public Color color;
-    public Sprite sprite;
+    public BulletConfig bulletConfig;
+    public Type type;
 
     [SerializeField] private SpriteRenderer spriteRenderer;
+
 
     // Start is called before the first frame update
     void Start()
     {
-        spriteRenderer.sprite = sprite;
+        spriteRenderer.sprite = bulletConfig.sprite;
+        type = bulletConfig.type;
         transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
     }
 

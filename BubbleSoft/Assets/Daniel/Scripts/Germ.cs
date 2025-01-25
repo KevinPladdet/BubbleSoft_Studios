@@ -20,12 +20,17 @@ public class Germ : MonoBehaviour
 
 
     [SerializeField] private Sprite[] sprites;
+    [SerializeField] private SpriteRenderer ammoDisplay;
+    [SerializeField] private BulletConfig nextBullet;
 
     // Start is called before the first frame update
     void Start()
     {
         sprites = germ.sprites;
         fireRate = germ.fireRate;
+
+        nextBullet = germ.bullets[Random.Range(0, 3)];
+        ammoDisplay.sprite = nextBullet.sprite;
     }
 
     // Update is called once per frame
@@ -44,8 +49,11 @@ public class Germ : MonoBehaviour
             buscript.velocity = 10;
             buscript.direction = lookAt;
             buscript.angle = angle;
-            buscript.sprite = sprites[Random.Range(0, sprites.Length)];
-            //buscript.color = colors[Random.Range(0, 3)];
+            buscript.bulletConfig = nextBullet;
+
+
+            nextBullet = germ.bullets[Random.Range(0, 3)];
+            ammoDisplay.sprite = nextBullet.sprite;
         }
 
     }

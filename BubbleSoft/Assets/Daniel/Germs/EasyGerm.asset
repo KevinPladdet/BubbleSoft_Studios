@@ -17,3 +17,7 @@ MonoBehaviour:
   - {fileID: -24097037, guid: 3afea5e5260f64dad8b70135967d58f2, type: 3}
   - {fileID: -666019, guid: 3afea5e5260f64dad8b70135967d58f2, type: 3}
   - {fileID: 1629617653, guid: 3afea5e5260f64dad8b70135967d58f2, type: 3}
+  bullets:
+  - {fileID: 11400000, guid: d439a6b4e28e343acbdb12f284787670, type: 2}
+  - {fileID: 11400000, guid: 141ddfff69fe4402ba6dcf0aa9bdb261, type: 2}
+  - {fileID: 11400000, guid: 8c52f3c9be4574b83adc1ca73ec14249, type: 2}
