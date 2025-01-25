@@ -25,6 +25,7 @@ public class OptionsMenu : MonoBehaviour
         
     }
 
+
     public void SetSpanish()
     {
         IsSpanish = true;

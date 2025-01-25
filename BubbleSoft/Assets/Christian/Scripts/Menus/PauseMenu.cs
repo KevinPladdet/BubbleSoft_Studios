@@ -19,7 +19,6 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] private GameObject bgCamera;
     [SerializeField] private GameObject optionsBGCamera;
 
-    [SerializeField] private GameObject onHoverText;
 
     private bool isPaused = false;
 
@@ -45,9 +44,6 @@ public class PauseMenu : MonoBehaviour
                 OptionsMenu.SetActive(false);
                 healthBar.SetActive(true);
                 objectives.SetActive(true);
-                playerCamera.SetActive(true);
-                optionsBGCamera.SetActive(false);
-                Cursor.lockState = CursorLockMode.Locked;
                 Time.timeScale = 1f;
                 isPaused = false;
 
@@ -60,10 +56,6 @@ public class PauseMenu : MonoBehaviour
                 MainMenuButton.SetActive(true);
                 healthBar.SetActive(false);
                 objectives.SetActive(false);
-                playerCamera.SetActive(false);
-                optionsBGCamera.SetActive(true);
-                onHoverText.SetActive(false);
-                Cursor.lockState = CursorLockMode.None;
                 Time.timeScale = 0f;
                 isPaused = true;
             }
@@ -80,7 +72,6 @@ public class PauseMenu : MonoBehaviour
         objectives.SetActive(true);
         playerCamera.SetActive(true);
         optionsBGCamera.SetActive(false);
-        Cursor.lockState = CursorLockMode.Locked;
         Time.timeScale = 1f;
         isPaused = false;
     }
@@ -94,10 +85,8 @@ public class PauseMenu : MonoBehaviour
         MainMenu.SetActive(true);
         healthBar.SetActive(false);
         objectives.SetActive(false);
-        playerCamera.SetActive(false);
-        bgCamera.SetActive(true);
+
         optionsBGCamera.SetActive(false);
-        onHoverText.SetActive(false);
         isPaused = false;
         canActivate = false;
     }
