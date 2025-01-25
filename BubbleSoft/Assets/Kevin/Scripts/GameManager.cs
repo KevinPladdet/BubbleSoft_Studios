@@ -6,7 +6,7 @@ public class GameManager : MonoBehaviour
 {
 
     // Difficulty Values
-    [SerializeField] private int bubbleSpeed;
+    public float bubbleSpeedMultiplier;
 
     void Start()
     {
