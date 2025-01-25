@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9069434154522022418}
   - component: {fileID: 8659631914825970575}
+  - component: {fileID: 3962311800733003915}
   m_Layer: 0
   m_Name: Bullet
   m_TagString: Untagged
@@ -48,8 +49,44 @@ MonoBehaviour:
   direction: {x: 0, y: 0, z: 0}
   angle: 0
   velocity: 5
-  sprite: {fileID: 0}
+  bulletConfig: {fileID: 0}
+  type: 0
   spriteRenderer: {fileID: 4261612267431337960}
+--- !u!58 &3962311800733003915
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1073576573778261508}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.17225128
 --- !u!1 &3833780282347533710
 GameObject:
   m_ObjectHideFlags: 0
