@@ -16,14 +16,4 @@ public class GameManager : MonoBehaviour
 
     [Header("References")]
     public TextMeshProUGUI missionText;
-
-    void Start()
-    {
-        
-    }
-    
-    void Update()
-    {
-        
-    }
 }

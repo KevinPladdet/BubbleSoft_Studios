@@ -37,7 +37,7 @@ public class BubbleBehaviour : MonoBehaviour
 
         // Rotates bubble so it faces towards the player
         Vector3 vectorToTarget = playerPos.position - transform.position;
-        float angle = Mathf.Atan2(vectorToTarget.y, vectorToTarget.x) * Mathf.Rad2Deg - 265; // 270 makes it rotate perfectly towards the player
+        float angle = Mathf.Atan2(vectorToTarget.y, vectorToTarget.x) * Mathf.Rad2Deg - 270; // 270 makes it rotate perfectly towards the player
         Quaternion q = Quaternion.AngleAxis(angle, Vector3.forward);
         transform.rotation = (q);
     }
