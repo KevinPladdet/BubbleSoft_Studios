@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class BubbleSpawner : MonoBehaviour
 {
-    
+
+    [SerializeField] private GameManager gm;
     [SerializeField] private GameObject bubblePrefab;
     [SerializeField] private Vector2 randomAngle;
     [SerializeField] private float spawnFrequency;
@@ -25,11 +26,12 @@ public class BubbleSpawner : MonoBehaviour
 
     private IEnumerator SpawnBubbles()
     {
-        while (true)
+        while (!gm.stopSpawningBubbles)
         {
             yield return new WaitForSeconds(spawnFrequency);
             randomAngle = Quaternion.Euler(0f, 0f, Random.Range(0, 360)) * Vector2.right * 7; // The 7 means that bubbles spawn at position 7,7 in a 360 degrees radius
             Instantiate(bubblePrefab, randomAngle, Quaternion.identity, this.transform);
+            gm.totalBubbles += 1;
         }
     }
 
@@ -39,6 +41,7 @@ public class BubbleSpawner : MonoBehaviour
         {
             randomAngle = Quaternion.Euler(0f, 0f, Random.Range(0, 360)) * Vector2.right * 11;
             Instantiate(bubblePrefab, randomAngle, Quaternion.identity, this.transform);
+            gm.totalBubbles += bubblesAmount;
         }
     }
 }

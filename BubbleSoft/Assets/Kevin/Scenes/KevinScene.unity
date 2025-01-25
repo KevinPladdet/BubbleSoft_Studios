@@ -420,8 +420,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 435, y: 500}
-  m_SizeDelta: {x: 1050, y: 50}
+  m_AnchoredPosition: {x: 350, y: 500}
+  m_SizeDelta: {x: 1250, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1031420643
 MonoBehaviour:
@@ -443,7 +443,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Objective: Destroy 50 bubbles'
+  m_text: 'Objective: Survive 50 bubbles!'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 213d54d3b59fae24ebd813291f60fc09, type: 2}
   m_sharedMaterial: {fileID: 5504511176837846978, guid: 213d54d3b59fae24ebd813291f60fc09, type: 2}
@@ -564,9 +564,59 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f9b29136428b934a9ff4124a61aad8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gm: {fileID: 2031916711}
   bubblePrefab: {fileID: 4487117353070965958, guid: 3e3f8afe5ce0ef14aaf53d30992cd533, type: 3}
   randomAngle: {x: 0, y: 0}
   spawnFrequency: 0.5
+--- !u!1 &1133261281
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1133261283}
+  - component: {fileID: 1133261282}
+  m_Layer: 0
+  m_Name: WaveManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1133261282
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1133261281}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a75a84cd8120ed47899e2f81d16fd79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gm: {fileID: 2031916711}
+  missionList:
+  - Survive 50 bubbles!
+  - Survive for 60 seconds!
+  - Survive 25 red bubbles!
+--- !u!4 &1133261283
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1133261281}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1354652730
 GameObject:
   m_ObjectHideFlags: 0
@@ -860,6 +910,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e21af9291c831ba49bcf0ee6e2f95504, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gm: {fileID: 2031916711}
 --- !u!50 &1788589662
 Rigidbody2D:
   serializedVersion: 4
@@ -917,6 +968,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bubbleSpeedMultiplier: 1
+  totalBubbles: 0
+  poppedBubbles: 0
+  stopSpawningBubbles: 0
+  missionText: {fileID: 1031420643}
 --- !u!4 &2031916712
 Transform:
   m_ObjectHideFlags: 0
@@ -941,5 +996,6 @@ SceneRoots:
   - {fileID: 1772332173}
   - {fileID: 756009945}
   - {fileID: 1041941127}
+  - {fileID: 1133261283}
   - {fileID: 2031916712}
   - {fileID: 200464019}

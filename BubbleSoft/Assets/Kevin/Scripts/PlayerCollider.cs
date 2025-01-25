@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class PlayerCollider : MonoBehaviour
 {
+
+    [SerializeField] private GameManager gm;
+
     void Start()
     {
         
@@ -18,6 +21,17 @@ public class PlayerCollider : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Bubble"))
         {
+            gm.poppedBubbles += 1;
+            //gm.missionText.text = "Objective: Survive 50 bubbles";
+
+            if (gm.poppedBubbles == 50)
+            {
+                gm.stopSpawningBubbles = true;
+                gm.missionText.color = new Color(0, 255, 0);
+            }
+
+            // Check if bubbles popped is 50, if yes stop spawning bubbles
+
             Destroy(collision.gameObject);
         }
     }

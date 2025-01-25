@@ -32,10 +32,17 @@ public class BubbleBehaviour : MonoBehaviour
         health = bubbleConfig.health;
         damage = bubbleConfig.damage;
         speedMultiplier = bubbleConfig.speedMultiplier;
+
+        // Rotates bubble so it faces towards the player
+        Vector3 vectorToTarget = playerPos.position - transform.position;
+        float angle = Mathf.Atan2(vectorToTarget.y, vectorToTarget.x) * Mathf.Rad2Deg - 265; // 270 makes it rotate perfectly towards the player
+        Quaternion q = Quaternion.AngleAxis(angle, Vector3.forward);
+        transform.rotation = (q);
     }
     
     void Update()
     {
+
         transform.position = Vector2.MoveTowards(transform.position, playerPos.position, (bubbleSpeed * speedMultiplier * gm.bubbleSpeedMultiplier) * Time.deltaTime);
         if (!enableSlowdown && bubbleSpeed >= minSpeed)
         {
@@ -90,7 +97,6 @@ public class BubbleBehaviour : MonoBehaviour
         Destroy(this.gameObject);
         foreach (var bubble in chainedBubbles)
         {
-            
             bubble.destroyBubble(type);
         }
 

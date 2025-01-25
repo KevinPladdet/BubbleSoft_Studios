@@ -4,15 +4,31 @@ using UnityEngine;
 
 public class WaveManager : MonoBehaviour
 {
-    // Start is called before the first frame update
+
+    [SerializeField] private GameManager gm;
+
+    public List<string> missionList = new List<string>();
+
     void Start()
     {
         
     }
-
-    // Update is called once per frame
+    
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            SelectMission();
+        }
+    }
+
+    private void SelectMission()
+    {
+        string nextObjective;
+        do
+        {
+            nextObjective = "Objective: " + missionList[Random.Range(0, missionList.Count)];
+        } while (gm.missionText.text == nextObjective);
+        gm.missionText.text = nextObjective;
     }
 }
