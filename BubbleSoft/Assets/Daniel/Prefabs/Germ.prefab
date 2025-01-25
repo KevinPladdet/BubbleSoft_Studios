@@ -138,6 +138,10 @@ MonoBehaviour:
   bulletPrefab: {fileID: 1073576573778261508, guid: 91da94b09fb7f4c2582a56fc398d31e0, type: 3}
   shootingPos: {fileID: 6274775450729161800}
   fireRate: 200
+  colors:
+  - {r: 1, g: 0, b: 0, a: 1}
+  - {r: 0.3034916, g: 1, b: 0, a: 1}
+  - {r: 1, g: 0.95132554, b: 0, a: 1}
 --- !u!1 &3454947835521392937
 GameObject:
   m_ObjectHideFlags: 0

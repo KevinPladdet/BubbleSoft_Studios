@@ -48,6 +48,8 @@ MonoBehaviour:
   direction: {x: 0, y: 0, z: 0}
   angle: 0
   velocity: 5
+  color: {r: 0, g: 0, b: 0, a: 0}
+  spriteRenderer: {fileID: 4261612267431337960}
 --- !u!1 &3833780282347533710
 GameObject:
   m_ObjectHideFlags: 0

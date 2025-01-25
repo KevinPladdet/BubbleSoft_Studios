@@ -7,12 +7,14 @@ public class Bullet : MonoBehaviour
     public Vector3 direction;
     public float angle;
     public float velocity;
+    public Color color;
+
+    [SerializeField] private SpriteRenderer spriteRenderer;
 
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log("works");
-        StartCoroutine(DestroyBullet());
+        spriteRenderer.color = color;
         transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
     }
 
@@ -20,13 +22,12 @@ public class Bullet : MonoBehaviour
     void Update()
     {
         Vector3 position = Camera.main.WorldToViewportPoint(transform.position);
+        if (position.x < 0 || position.x > 1 || position.y < 0 || position.y > 1)
+        {
+            Destroy(this.gameObject);
+        }
         transform.position += direction.normalized * velocity * Time.deltaTime;
-    }
-
-    private IEnumerator DestroyBullet()
-    {
-        yield return new WaitForSeconds(3);
-        Destroy(this.gameObject);
+        
     }
 
 }

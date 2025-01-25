@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Germ : MonoBehaviour
 {
-    [SerializeField] private Vector3 look_at;
-    [SerializeField] private  Vector3 mouse_pos;
+    [SerializeField] private Vector3 lookAt;
+    [SerializeField] private  Vector3 mousePos;
     [SerializeField] private float angle;
     [SerializeField] private Vector3 objectPos;
     [SerializeField] private GameObject bulletPrefab;
@@ -16,10 +16,11 @@ public class Germ : MonoBehaviour
 
     public float fireRate = 200f;
 
+    public Color[] colors = new Color[] { Color.red, Color.yellow, Color.green };
+
     // Start is called before the first frame update
     void Start()
     {
-        
     }
 
     // Update is called once per frame
@@ -36,22 +37,23 @@ public class Germ : MonoBehaviour
             var bullet = Instantiate(bulletPrefab, shootingPos.position, Quaternion.identity);
             Bullet buscript = bullet.GetComponent<Bullet>();
             buscript.velocity = 10;
-            buscript.direction = look_at;
+            buscript.direction = lookAt;
             buscript.angle = angle;
+            buscript.color = colors[Random.Range(0, 3)];
         }
 
     }
 
     private void lookAtMouse()
     {
-        look_at = new Vector3();
+        lookAt = new Vector3();
         objectPos = Camera.main.WorldToScreenPoint(transform.position);
 
-        mouse_pos = Input.mousePosition;
-        look_at.x = mouse_pos.x - objectPos.x;
-        look_at.y = mouse_pos.y - objectPos.y;
+        mousePos = Input.mousePosition;
+        lookAt.x = mousePos.x - objectPos.x;
+        lookAt.y = mousePos.y - objectPos.y;
 
-        angle = Mathf.Atan2(look_at.y, look_at.x) * Mathf.Rad2Deg - 90;
+        angle = Mathf.Atan2(lookAt.y, lookAt.x) * Mathf.Rad2Deg - 90;
         transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
     }
 }
