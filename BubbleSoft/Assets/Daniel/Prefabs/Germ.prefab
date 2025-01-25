@@ -131,17 +131,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c383aecefa189440bb38a5603cdede4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  look_at: {x: 0, y: 0, z: 0}
-  mouse_pos: {x: 0, y: 0, z: 0}
-  angle: 0
-  objectPos: {x: 0, y: 0, z: 0}
   bulletPrefab: {fileID: 1073576573778261508, guid: 91da94b09fb7f4c2582a56fc398d31e0, type: 3}
   shootingPos: {fileID: 6274775450729161800}
+  germ: {fileID: 0}
   fireRate: 200
-  colors:
-  - {r: 1, g: 0, b: 0, a: 1}
-  - {r: 0.3034916, g: 1, b: 0, a: 1}
-  - {r: 1, g: 0.95132554, b: 0, a: 1}
+  sprites: []
 --- !u!1 &3454947835521392937
 GameObject:
   m_ObjectHideFlags: 0

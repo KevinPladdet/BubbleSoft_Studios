@@ -4,23 +4,28 @@ using UnityEngine;
 
 public class Germ : MonoBehaviour
 {
-    [SerializeField] private Vector3 lookAt;
-    [SerializeField] private  Vector3 mousePos;
-    [SerializeField] private float angle;
-    [SerializeField] private Vector3 objectPos;
-    [SerializeField] private GameObject bulletPrefab;
+    private Vector3 lookAt;
+    private  Vector3 mousePos;
+    private float angle;
+    private Vector3 objectPos;
+    public GameObject bulletPrefab;
     [SerializeField] private Transform shootingPos;
+
+    public GermConfig germ;
 
     private float elapsedTimeMs = 0f;
     private float lastTimeShooted = 0f;
 
     public float fireRate = 200f;
 
-    public Color[] colors = new Color[] { Color.red, Color.yellow, Color.green };
+
+    [SerializeField] private Sprite[] sprites;
 
     // Start is called before the first frame update
     void Start()
     {
+        sprites = germ.sprites;
+        fireRate = germ.fireRate;
     }
 
     // Update is called once per frame
@@ -34,12 +39,13 @@ public class Germ : MonoBehaviour
         if (Input.GetMouseButton(0) && canShoot)
         {
             lastTimeShooted = elapsedTimeMs;
-            var bullet = Instantiate(bulletPrefab, shootingPos.position, Quaternion.identity);
+            GameObject bullet = Instantiate(bulletPrefab, shootingPos.position, Quaternion.identity);
             Bullet buscript = bullet.GetComponent<Bullet>();
             buscript.velocity = 10;
             buscript.direction = lookAt;
             buscript.angle = angle;
-            buscript.color = colors[Random.Range(0, 3)];
+            buscript.sprite = sprites[Random.Range(0, sprites.Length)];
+            //buscript.color = colors[Random.Range(0, 3)];
         }
 
     }
