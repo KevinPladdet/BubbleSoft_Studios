@@ -27,7 +27,7 @@ public class Germ : MonoBehaviour
     { 
         fireRate = germ.fireRate;
 
-        //nextBullet = germ.bullets[Random.Range(0, 3)];
+        nextBullet = germ.bullets[Random.Range(0, germ.bullets.Length)];
         ammoDisplay.sprite = nextBullet.sprite;
     }
 
