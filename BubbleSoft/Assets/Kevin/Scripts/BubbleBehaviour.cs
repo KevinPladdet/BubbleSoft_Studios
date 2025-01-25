@@ -107,8 +107,11 @@ public class BubbleBehaviour : MonoBehaviour
 
         foreach (var bubble in chainedBubbles)
         {
-            localCurrentDelay++;
-            bubble.destroyBubble(type, localCurrentDelay);
+            if ((int)bubble.bubbleConfig.type == (int)type)
+            {
+                localCurrentDelay++;
+                bubble.destroyBubble(type, localCurrentDelay);
+            }
         }
 
 
