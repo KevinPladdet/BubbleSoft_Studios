@@ -6,6 +6,5 @@ using UnityEngine;
 public class GermConfig : ScriptableObject
 {
     public float fireRate;
-    public Sprite[] sprites;
     public BulletConfig[] bullets;
 }

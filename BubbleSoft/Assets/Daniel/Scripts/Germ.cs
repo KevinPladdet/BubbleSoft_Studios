@@ -19,14 +19,12 @@ public class Germ : MonoBehaviour
     public float fireRate = 200f;
 
 
-    [SerializeField] private Sprite[] sprites;
     [SerializeField] private SpriteRenderer ammoDisplay;
     [SerializeField] private BulletConfig nextBullet;
 
     // Start is called before the first frame update
     void Start()
-    {
-        sprites = germ.sprites;
+    { 
         fireRate = germ.fireRate;
 
         nextBullet = germ.bullets[Random.Range(0, 3)];

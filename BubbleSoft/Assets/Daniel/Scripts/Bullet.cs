@@ -8,7 +8,7 @@ public class Bullet : MonoBehaviour
     public float angle;
     public float velocity;
     public BulletConfig bulletConfig;
-    public Type type;
+    public ColorType type;
 
     [SerializeField] private SpriteRenderer spriteRenderer;
 

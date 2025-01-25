@@ -232,7 +232,7 @@ PrefabInstance:
     - target: {fileID: 844755180457974927, guid: adce20a30fdb34ddca52a398028bd268, type: 3}
       propertyPath: germ
       value: 
-      objectReference: {fileID: 11400000, guid: a0e3e29bd034e40ee8967ad501b7726f, type: 2}
+      objectReference: {fileID: 11400000, guid: 893c6d0add92b403a858c4ab2f3247d3, type: 2}
     - target: {fileID: 1516273283648915660, guid: adce20a30fdb34ddca52a398028bd268, type: 3}
       propertyPath: m_Name
       value: Germ
