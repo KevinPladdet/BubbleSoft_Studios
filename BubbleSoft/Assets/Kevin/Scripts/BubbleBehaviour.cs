@@ -19,8 +19,10 @@ public class BubbleBehaviour : MonoBehaviour
 
     public BubbleConfig bubbleConfig;
 
+    [SerializeField] private int destroyDelayInMs;
     [SerializeField] private List<BubbleBehaviour> chainedBubbles;
-    private bool isBeingDestroyed = false;
+    [SerializeField] private bool isBeingDestroyed = false;
+    [SerializeField] private float delayDestroyed = 0;
 
     void Start()
     {
@@ -42,6 +44,13 @@ public class BubbleBehaviour : MonoBehaviour
     
     void Update()
     {
+       if (isBeingDestroyed && delayDestroyed > 0)
+        {
+            delayDestroyed = delayDestroyed - Time.deltaTime * 1000;
+            
+        } else if (isBeingDestroyed && delayDestroyed <= 0) {
+            Destroy(this.gameObject);
+        }
 
         transform.position = Vector2.MoveTowards(transform.position, playerPos.position, (bubbleSpeed * speedMultiplier * gm.bubbleSpeedMultiplier) * Time.deltaTime);
         if (!enableSlowdown && bubbleSpeed >= minSpeed)
@@ -57,7 +66,6 @@ public class BubbleBehaviour : MonoBehaviour
 
         if (collisionObject.tag == "Bubble")
         {
-            Debug.Log("Touching");
             chainedBubbles.Add(collisionObject.GetComponent<BubbleBehaviour>());
 
         } else if (collisionObject.tag == "Bullet")
@@ -69,7 +77,7 @@ public class BubbleBehaviour : MonoBehaviour
             if (health < 1)
             {
                 Bullet bullet = collisionObject.GetComponent<Bullet>();
-                destroyBubble(bullet.type);
+                destroyBubble(bullet.type, 0);
             }
 
         }
@@ -80,27 +88,31 @@ public class BubbleBehaviour : MonoBehaviour
     private void OnCollisionExit2D(Collision2D collision)
     {
         var collisionObject = collision.gameObject;
-        Debug.Log("Removing object");
         if (collisionObject.tag == "Bubble")
         {
             chainedBubbles.Remove(collisionObject.GetComponent<BubbleBehaviour>());
         }
     }
 
-    private void destroyBubble(ColorType type)
+    private void destroyBubble(ColorType type, int counterDelay)
     {
-        Debug.Log("Deleting {gameObject.name}");
         if (isBeingDestroyed) return;
-        isBeingDestroyed = true;
 
-        Debug.Log("List chainedBubbles length: {chainedBubbles.Length}");
-        Destroy(this.gameObject);
+        isBeingDestroyed = true;
+        delayDestroyed = counterDelay * destroyDelayInMs;
+        Debug.Log("Delay destroyed: " + delayDestroyed);
+        
+        int localCurrentDelay = counterDelay;
+
+
         foreach (var bubble in chainedBubbles)
         {
-            bubble.destroyBubble(type);
+            localCurrentDelay++;
+            bubble.destroyBubble(type, localCurrentDelay);
         }
 
-    }
 
+
+    }
 
 }

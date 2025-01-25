@@ -55,7 +55,10 @@ MonoBehaviour:
   damage: 0
   chainCollider: {fileID: 856162560869097089}
   bubbleConfig: {fileID: 11400000, guid: 352e8bbfe118342ceb6f5c164ed8d1a0, type: 2}
+  destroyDelayInMs: 50
   chainedBubbles: []
+  isBeingDestroyed: 0
+  delayDestroyed: 0
 --- !u!50 &5548316417850454391
 Rigidbody2D:
   serializedVersion: 4
