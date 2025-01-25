@@ -6,6 +6,7 @@ public class PlayerCollider : MonoBehaviour
 {
 
     [SerializeField] private GameManager gm;
+    [SerializeField] private Germ germScript;
 
     void Start()
     {
@@ -34,5 +35,11 @@ public class PlayerCollider : MonoBehaviour
 
             Destroy(collision.gameObject);
         }
+    }
+
+    public void ResetCanShoot()
+    {
+        Debug.Log("test"); // Animator transitions trigger not done
+        germScript.canShoot = true;
     }
 }
