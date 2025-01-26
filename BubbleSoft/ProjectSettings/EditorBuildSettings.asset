@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Christian/Scenes/MainMenu.unity
     guid: 71fe4e0dc74e47b499f5e2e8dfa73f55
+  - enabled: 1
+    path: Assets/Kevin/Scenes/KevinScene.unity
+    guid: d02718a2a4c30364a98933c9bec59e88
   m_configObjects: {}
