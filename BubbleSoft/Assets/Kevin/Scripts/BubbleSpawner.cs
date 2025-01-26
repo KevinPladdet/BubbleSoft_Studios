@@ -10,6 +10,7 @@ public class BubbleSpawner : MonoBehaviour
     [SerializeField] private Vector2 randomAngle;
     [SerializeField] private float spawnFrequency;
     [SerializeField] private int bubblesAmount;
+    [SerializeField] private BubbleConfig[] bubbleConfigs;
 
     void Start()
     {
@@ -31,7 +32,8 @@ public class BubbleSpawner : MonoBehaviour
         {
             yield return new WaitForSeconds(spawnFrequency);
             randomAngle = Quaternion.Euler(0f, 0f, Random.Range(0, 360)) * Vector2.right * 7; // The 7 means that bubbles spawn at position 7,7 in a 360 degrees radius
-            Instantiate(bubblePrefab, randomAngle, Quaternion.identity, this.transform);
+            var bubble = Instantiate(bubblePrefab, randomAngle, Quaternion.identity, this.transform);
+            bubble.GetComponent<BubbleBehaviour>().bubbleConfig = bubbleConfigs[Random.Range(0, bubbleConfigs.Length)];
             gm.totalBubbles += 1;
         }
     }

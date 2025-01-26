@@ -898,6 +898,12 @@ MonoBehaviour:
   randomAngle: {x: 0, y: 0}
   spawnFrequency: 0.5
   bubblesAmount: 10
+  bubbleConfigs:
+  - {fileID: 11400000, guid: 352e8bbfe118342ceb6f5c164ed8d1a0, type: 2}
+  - {fileID: 11400000, guid: 2de5b7977691b4255b47aa698af0d618, type: 2}
+  - {fileID: 11400000, guid: c8dfb0731f9624ae08dfa46103ee08f3, type: 2}
+  - {fileID: 11400000, guid: a592f49b6f17246e381292696bc83abb, type: 2}
+  - {fileID: 11400000, guid: 043b1f3a62496449ca24bccf28a1c022, type: 2}
 --- !u!1 &1133261281
 GameObject:
   m_ObjectHideFlags: 0

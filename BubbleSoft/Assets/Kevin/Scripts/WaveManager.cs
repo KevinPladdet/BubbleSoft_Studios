@@ -9,11 +9,6 @@ public class WaveManager : MonoBehaviour
     [SerializeField] private BubbleSpawner bs;
 
     public List<string> missionList = new List<string>();
-
-    void Start()
-    {
-        
-    }
     
     void Update()
     {
