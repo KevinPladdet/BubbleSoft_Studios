@@ -10,6 +10,7 @@ public class Germ : MonoBehaviour
     private Vector3 objectPos;
     public GameObject bulletPrefab;
     [SerializeField] private Transform shootingPos;
+    [SerializeField] private Animator anim;
 
     public GermConfig germ;
 
@@ -42,20 +43,25 @@ public class Germ : MonoBehaviour
 
         if (Input.GetMouseButton(0) && canShoot)
         {
+            anim.SetTrigger("Shoot");
             canShoot = false;
-            lastTimeShooted = elapsedTimeMs;
-            GameObject bullet = Instantiate(bulletPrefab, shootingPos.position, Quaternion.identity);
-            Bullet buscript = bullet.GetComponent<Bullet>();
-            buscript.velocity = 10;
-            buscript.direction = lookAt;
-            buscript.angle = angle;
-            buscript.bulletConfig = nextBullet;
-
-
-            nextBullet = germ.bullets[Random.Range(0, 3)];
-            ammoDisplay.sprite = nextBullet.sprite;
         }
 
+    }
+
+    public void ShootBullet()
+    {
+        lastTimeShooted = elapsedTimeMs;
+        GameObject bullet = Instantiate(bulletPrefab, shootingPos.position, Quaternion.identity);
+        Bullet buscript = bullet.GetComponent<Bullet>();
+        buscript.velocity = 10;
+        buscript.direction = lookAt;
+        buscript.angle = angle;
+        buscript.bulletConfig = nextBullet;
+
+
+        nextBullet = germ.bullets[Random.Range(0, 3)];
+        ammoDisplay.sprite = nextBullet.sprite;
     }
 
     private void lookAtMouse()
