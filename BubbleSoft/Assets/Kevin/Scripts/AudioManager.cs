@@ -7,12 +7,22 @@ public class AudioManager : MonoBehaviour
     [Header("Audio Clips")]
     [SerializeField] private AudioClip[] bubblePopSFX;
     [SerializeField] private AudioClip[] wordSFX;
+    public AudioClip healSFX;
+    public AudioClip hurtSFX;
+    public AudioClip waveEndsSFX;
+    public AudioClip gameOverSFX;
+    public AudioClip shootSFX;
 
     [Header("Audio Mixers")]
     [SerializeField] private AudioSource musicMixer;
     [SerializeField] private AudioSource sfxMixer;
 
     private int randomNumber;
+
+    public void PlaySFX(AudioClip audioName)
+    {
+        sfxMixer.PlayOneShot(audioName);
+    }
 
     public void RandomBubblePopSFX()
     {

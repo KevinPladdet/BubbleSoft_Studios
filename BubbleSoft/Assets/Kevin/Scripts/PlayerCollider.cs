@@ -28,6 +28,7 @@ public class PlayerCollider : MonoBehaviour
 
     public void ResetCanShoot()
     {
+        am.PlaySFX(am.shootSFX);
         germScript.canShoot = true;
         germScript.ShootBullet();
     }
