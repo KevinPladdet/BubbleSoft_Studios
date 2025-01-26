@@ -66,7 +66,12 @@ public class BubbleBehaviour : MonoBehaviour
 
         if (collisionObject.tag == "Bubble")
         {
-            chainedBubbles.Add(collisionObject.GetComponent<BubbleBehaviour>());
+            var otherBubble = collisionObject.GetComponent<BubbleBehaviour>();
+            if ((int)bubbleConfig.type == (int)otherBubble.bubbleConfig.type)
+            {
+                chainedBubbles.Add(collisionObject.GetComponent<BubbleBehaviour>());
+            }
+                
 
         } else if (collisionObject.tag == "Bullet")
         {
@@ -77,7 +82,7 @@ public class BubbleBehaviour : MonoBehaviour
             if (health < 1)
             {
                 Bullet bullet = collisionObject.GetComponent<Bullet>();
-                destroyBubble(bullet.type, 0);
+                destroyBubble(bullet.type, 0, true);
             }
 
         }
@@ -94,9 +99,9 @@ public class BubbleBehaviour : MonoBehaviour
         }
     }
 
-    private void destroyBubble(ColorType type, int counterDelay)
+    private void destroyBubble(ColorType type, int counterDelay, bool force)
     {
-        if (isBeingDestroyed) return;
+        if (isBeingDestroyed && !force) return;
 
         isBeingDestroyed = true;
         delayDestroyed = counterDelay * destroyDelayInMs;
@@ -106,16 +111,10 @@ public class BubbleBehaviour : MonoBehaviour
 
 
         foreach (var bubble in chainedBubbles)
-        {
-            if ((int)bubble.bubbleConfig.type == (int)type)
-            {
-                localCurrentDelay++;
-                bubble.destroyBubble(type, localCurrentDelay);
-            }
+        { 
+            localCurrentDelay++;
+            bubble.destroyBubble(type, localCurrentDelay, false);
         }
-
-
-
     }
 
 }
