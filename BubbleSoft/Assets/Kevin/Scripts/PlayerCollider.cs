@@ -7,6 +7,8 @@ public class PlayerCollider : MonoBehaviour
 
     [SerializeField] private GameManager gm;
     [SerializeField] private Germ germScript;
+    [SerializeField] private AudioManager am;
+    
 
     void Start()
     {
@@ -23,6 +25,8 @@ public class PlayerCollider : MonoBehaviour
         if (collision.gameObject.CompareTag("Bubble"))
         {
             gm.poppedBubbles += 1;
+            am.RandomBubblePopSFX();
+
             //gm.missionText.text = "Objective: Survive 50 bubbles";
 
             if (gm.poppedBubbles == 50)
