@@ -24,6 +24,7 @@ public class BubbleBehaviour : MonoBehaviour
     [SerializeField] private bool isBeingDestroyed = false;
     [SerializeField] private float delayDestroyed = 0;
     private int counterDelay = 0;
+    private bool chainReactionTriggered = false;
 
     void Start()
     {
@@ -50,6 +51,16 @@ public class BubbleBehaviour : MonoBehaviour
             delayDestroyed = delayDestroyed - Time.deltaTime * 1000;
             
         } else if (isBeingDestroyed && delayDestroyed <= 0) {
+            if (chainReactionTriggered)
+            {
+                foreach (var bubble in chainedBubbles)
+                {
+                    bubble.counterDelay = counterDelay + 1;
+                    bubble.destroyBubble(chainReactionTriggered, false);
+                }
+
+            }
+
             Destroy(this.gameObject);
         }
 
@@ -82,8 +93,10 @@ public class BubbleBehaviour : MonoBehaviour
 
             if (health < 1)
             {
+                counterDelay = 0;
                 Bullet bullet = collisionObject.GetComponent<Bullet>();
-                destroyBubble(bullet.type, 0, true);
+                bool canTriggerChain = (int)bullet.bulletConfig.type == (int)bubbleConfig.type;
+                destroyBubble(canTriggerChain, true);
             }
 
         }
@@ -100,22 +113,13 @@ public class BubbleBehaviour : MonoBehaviour
         }
     }
 
-    private void destroyBubble(ColorType type, int counterDelay, bool force)
+    private void destroyBubble(bool triggeredChainReaction, bool force)
     {
-        if (isBeingDestroyed && !force) return;
+        //if (isBeingDestroyed && !force) return;
 
         isBeingDestroyed = true;
+        chainReactionTriggered = triggeredChainReaction;
         delayDestroyed = counterDelay * destroyDelayInMs;
-        Debug.Log("Delay destroyed: " + delayDestroyed);
-        
-        int localCurrentDelay = counterDelay;
-
-
-        foreach (var bubble in chainedBubbles)
-        { 
-            localCurrentDelay++;
-            bubble.destroyBubble(type, localCurrentDelay, false);
-        }
     }
 
 }

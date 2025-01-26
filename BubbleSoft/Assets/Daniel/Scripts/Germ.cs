@@ -14,8 +14,6 @@ public class Germ : MonoBehaviour
 
     public GermConfig germ;
 
-    private float elapsedTimeMs = 0f;
-    private float lastTimeShooted = 0f;
     public bool canShoot = true;
 
     public float fireRate = 200f;
@@ -36,7 +34,6 @@ public class Germ : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        elapsedTimeMs += Time.deltaTime * 1000;
         lookAtMouse();
 
         //bool canShoot = (elapsedTimeMs - fireRate) > lastTimeShooted;
@@ -51,7 +48,6 @@ public class Germ : MonoBehaviour
 
     public void ShootBullet()
     {
-        lastTimeShooted = elapsedTimeMs;
         GameObject bullet = Instantiate(bulletPrefab, shootingPos.position, Quaternion.identity);
         Bullet buscript = bullet.GetComponent<Bullet>();
         buscript.velocity = 10;
