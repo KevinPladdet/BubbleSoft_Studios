@@ -8,17 +8,6 @@ public class PlayerCollider : MonoBehaviour
     [SerializeField] private GameManager gm;
     [SerializeField] private Germ germScript;
     [SerializeField] private AudioManager am;
-    
-
-    void Start()
-    {
-        
-    }
-
-    void Update()
-    {
-        
-    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

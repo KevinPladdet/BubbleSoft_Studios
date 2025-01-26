@@ -15,6 +15,7 @@ public class BubbleBehaviour : MonoBehaviour
 
     private Transform playerPos;
     private GameManager gm;
+    private AudioManager am;
     private bool enableSlowdown = false;
 
     public BubbleConfig bubbleConfig;
@@ -30,6 +31,7 @@ public class BubbleBehaviour : MonoBehaviour
     {
         playerPos = GameObject.Find("Player").transform;
         gm = GameObject.Find("GameManager").GetComponent<GameManager>();
+        am = GameObject.Find("AudioManager").GetComponent<AudioManager>();
 
         chainedBubbles = new List<BubbleBehaviour>();
         GetComponent<SpriteRenderer>().sprite = bubbleConfig.sprite;
@@ -60,7 +62,7 @@ public class BubbleBehaviour : MonoBehaviour
                 }
 
             }
-
+            am.RandomBubblePopSFX();
             Destroy(this.gameObject);
         }
 
