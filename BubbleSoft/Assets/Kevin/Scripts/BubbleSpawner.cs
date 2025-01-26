@@ -28,16 +28,24 @@ public class BubbleSpawner : MonoBehaviour
 
     public void SpawnLimitNumberOfBubbles()
     {
+        var currentBubbleType = bubbleConfigs[Random.Range(0, bubbleConfigs.Length)];
+        var currentAngle = Random.Range(0, 360);
         for (int i = 0; i < bubblesAmount; i++)
         {
-            randomAngle = Quaternion.Euler(0f, 0f, Random.Range(0, 360)) * Vector2.right * Random.Range(7, 13);
+            if (i % 5 == 0)
+            {
+                currentBubbleType = bubbleConfigs[Random.Range(0, bubbleConfigs.Length)];
+                currentAngle = Random.Range(0, 360);
+            }
+            
+            randomAngle = Quaternion.Euler(0f, 0f, currentAngle + Random.Range(-30, 30)) * Vector2.right * Random.Range(7, 13);
             var bubble = Instantiate(bubblePrefab, randomAngle, Quaternion.identity, this.transform);
-            bubble.GetComponent<BubbleBehaviour>().bubbleConfig = bubbleConfigs[Random.Range(0, bubbleConfigs.Length)];
+            bubble.GetComponent<BubbleBehaviour>().bubbleConfig = currentBubbleType;
 
         }
         gm.totalBubbles += bubblesAmount;
         gm.currentWaveBubbles += bubblesAmount;
-        this.bubblesAmount += 10;
+        this.bubblesAmount += 20;
     }
 
     public IEnumerator SpawnBubbles()

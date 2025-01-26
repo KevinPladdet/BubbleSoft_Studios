@@ -49,7 +49,6 @@ public class WaveManager : MonoBehaviour
 
 
         yield return new WaitForSeconds(4);
-        Debug.Log("After 2 seconds");
         gm.bubbleSpeedMultiplier += 0.02f;
         SelectMission();
         updateTextSurvive();
