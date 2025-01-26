@@ -820,7 +820,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 46eadb0947a068542802e09b7eda862d, type: 3}
   wordSFX: []
   healSFX: {fileID: 8300000, guid: 375ec07d5c33e334bbe5ed916cbd403f, type: 3}
-  hurtSFX: {fileID: 0}
+  hurtSFX: {fileID: 8300000, guid: 3318a36131da12b4696774959d6bcce5, type: 3}
   waveEndsSFX: {fileID: 8300000, guid: d0f364fe2bd227049bb5c9ce2340bbce, type: 3}
   gameOverSFX: {fileID: 8300000, guid: ab6bd7432d072134c8c89ccb91510a2a, type: 3}
   shootSFX: {fileID: 8300000, guid: 5919a9f45679ef64594250a6b363357e, type: 3}
