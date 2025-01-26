@@ -6,6 +6,7 @@ public class WaveManager : MonoBehaviour
 {
 
     [SerializeField] private GameManager gm;
+    [SerializeField] private BubbleSpawner bs;
 
     public List<string> missionList = new List<string>();
 
@@ -30,5 +31,9 @@ public class WaveManager : MonoBehaviour
             nextObjective = "Objective: " + missionList[Random.Range(0, missionList.Count)];
         } while (gm.missionText.text == nextObjective);
         gm.missionText.text = nextObjective;
+        gm.missionText.color = new Color(0, 0, 0);
+
+        gm.stopSpawningBubbles = false;
+        StartCoroutine(bs.SpawnBubbles());
     }
 }

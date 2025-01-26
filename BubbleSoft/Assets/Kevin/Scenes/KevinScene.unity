@@ -897,6 +897,7 @@ MonoBehaviour:
   bubblePrefab: {fileID: 4487117353070965958, guid: 3e3f8afe5ce0ef14aaf53d30992cd533, type: 3}
   randomAngle: {x: 0, y: 0}
   spawnFrequency: 0.5
+  bubblesAmount: 10
 --- !u!1 &1133261281
 GameObject:
   m_ObjectHideFlags: 0
@@ -927,6 +928,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gm: {fileID: 2031916711}
+  bs: {fileID: 1041941128}
   missionList:
   - Survive 50 bubbles!
   - Survive for 60 seconds!
@@ -1512,6 +1514,8 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 380335990}
+  - {fileID: 1980220261}
+  - {fileID: 682894995}
   - {fileID: 1788589659}
   - {fileID: 1772332173}
   - {fileID: 756009945}
@@ -1520,5 +1524,3 @@ SceneRoots:
   - {fileID: 2031916712}
   - {fileID: 200464019}
   - {fileID: 834600534}
-  - {fileID: 1980220261}
-  - {fileID: 682894995}

@@ -63,6 +63,14 @@ public class BubbleBehaviour : MonoBehaviour
 
             }
             am.RandomBubblePopSFX();
+            gm.poppedBubbles += 1;
+
+            if (gm.poppedBubbles == 50)
+            {
+                gm.stopSpawningBubbles = true;
+                gm.missionText.color = new Color(0, 255, 0);
+            }
+            
             Destroy(this.gameObject);
         }
 

@@ -9,6 +9,7 @@ public class BubbleSpawner : MonoBehaviour
     [SerializeField] private GameObject bubblePrefab;
     [SerializeField] private Vector2 randomAngle;
     [SerializeField] private float spawnFrequency;
+    [SerializeField] private int bubblesAmount;
 
     void Start()
     {
@@ -20,11 +21,11 @@ public class BubbleSpawner : MonoBehaviour
         // Spawn 10 bubbles at once
         if (Input.GetKeyDown(KeyCode.R))
         {
-            SpawnMultipleBubbles(10);
+            SpawnMultipleBubbles(bubblesAmount);
         }
     }
 
-    private IEnumerator SpawnBubbles()
+    public IEnumerator SpawnBubbles()
     {
         while (!gm.stopSpawningBubbles)
         {
@@ -35,7 +36,7 @@ public class BubbleSpawner : MonoBehaviour
         }
     }
 
-    private void SpawnMultipleBubbles(float bubblesAmount)
+    private void SpawnMultipleBubbles(int bubblesAmount)
     {
         for (int i = 0; i < bubblesAmount; i++)
         {
@@ -43,5 +44,7 @@ public class BubbleSpawner : MonoBehaviour
             Instantiate(bubblePrefab, randomAngle, Quaternion.identity, this.transform);
             gm.totalBubbles += bubblesAmount;
         }
+        Debug.Log("increase bubbles amount");
+        this.bubblesAmount += 5;
     }
 }
