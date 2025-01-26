@@ -10844,7 +10844,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &274184038
 RectTransform:
   m_ObjectHideFlags: 0
@@ -39135,8 +39135,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 350, y: 450}
-  m_SizeDelta: {x: 1250, y: 50}
+  m_AnchoredPosition: {x: 690.1932, y: 412.22607}
+  m_SizeDelta: {x: 539.6235, y: 238.448}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1031420643
 MonoBehaviour:
@@ -39185,19 +39185,19 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 50
+  m_fontSizeBase: 50
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
-  m_lineSpacing: 0
+  m_lineSpacing: 50
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
@@ -44514,6 +44514,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gm: {fileID: 2031916711}
   bs: {fileID: 1041941128}
+  ph: {fileID: 1788589664}
   missionList:
   - Survive 50 bubbles!
   - Survive for 60 seconds!
@@ -48657,6 +48658,30 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
         m_MethodName: GoToGame
         m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1031420641}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 274184037}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -68022,6 +68047,8 @@ MonoBehaviour:
   audioSource3: {fileID: 1672855394}
   audioSource2: {fileID: 1631131996}
   BattleAudio: {fileID: 1272702410}
+  healthBar: {fileID: 274184037}
+  missionText: {fileID: 1031420641}
   canActivate: 0
 --- !u!224 &1721022977
 RectTransform:
@@ -70871,6 +70898,7 @@ MonoBehaviour:
   currentHealth: 0
   healthBar: {fileID: 274184039}
   am: {fileID: 834600536}
+  player: {fileID: 1788589657}
 --- !u!1 &1788644965
 GameObject:
   m_ObjectHideFlags: 0
@@ -73972,7 +74000,7 @@ RectTransform:
   m_Father: {fileID: 274184038}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}

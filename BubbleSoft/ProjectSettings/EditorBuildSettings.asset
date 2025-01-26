@@ -8,10 +8,10 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
-  - enabled: 1
+  - enabled: 0
     path: Assets/Christian/Scenes/IntroScene.unity
     guid: e23c2de933890aa4e9493d7c9989ece6
-  - enabled: 1
+  - enabled: 0
     path: Assets/Christian/Scenes/MainMenu.unity
     guid: 71fe4e0dc74e47b499f5e2e8dfa73f55
   - enabled: 1

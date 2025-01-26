@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
@@ -16,6 +17,9 @@ public class PauseMenu : MonoBehaviour
     public AudioSource audioSource3;
     public AudioSource audioSource2;
     public AudioSource BattleAudio;
+
+    [SerializeField] private GameObject healthBar;
+    [SerializeField] private GameObject missionText;
 
     //[SerializeField] private GameObject healthBar;
     //[SerializeField] private GameObject objectives;
@@ -37,7 +41,7 @@ public class PauseMenu : MonoBehaviour
 
     public void Update()
     {
-        if (Input.GetKeyDown(KeyCode.K))
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
             OnPause();
             Debug.Log("Opening Pause Menu");
@@ -85,8 +89,6 @@ public class PauseMenu : MonoBehaviour
                 PauseMenu1.SetActive(false);
                 Canvas.SetActive(false);
                 OptionsMenu.SetActive(false);
-               // healthBar.SetActive(true);
-               // objectives.SetActive(true);
                 Time.timeScale = 1f;
                 isPaused = false;
 
@@ -97,8 +99,6 @@ public class PauseMenu : MonoBehaviour
                 Canvas.SetActive(false);
                 MainMenu.SetActive(false);
                 OptionsMenu.SetActive(false);
-                //healthBar.SetActive(false);
-               // objectives.SetActive(false);
                 Time.timeScale = 0f;
                 isPaused = true;
             }
@@ -120,16 +120,17 @@ public class PauseMenu : MonoBehaviour
 
     public void GoToMainMenu()
     {
-        BattleAudio.Stop();
-        audioSource3.Play();
-        PauseMenu1.SetActive(false);
-        Canvas.SetActive(true);
-        OptionsMenu.SetActive(false);
-        MainMenu.SetActive(true);
-        // healthBar.SetActive(false);
-        //  objectives.SetActive(false);
-        Time.timeScale = 0f;
-        isPaused = false;
-        canActivate = false;
+        SceneManager.LoadScene("KevinScene");
+        //BattleAudio.Stop();
+        //audioSource3.Play();
+        //PauseMenu1.SetActive(false);
+        //Canvas.SetActive(true);
+        //OptionsMenu.SetActive(false);
+        //MainMenu.SetActive(true);
+        //healthBar.SetActive(false);
+        //missionText.SetActive(false);
+        //Time.timeScale = 0f;
+        //isPaused = false;
+        //canActivate = false;
     }
 }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class AudioManager : MonoBehaviour
 {
@@ -32,5 +33,13 @@ public class AudioManager : MonoBehaviour
     public void RandomWordSFX()
     {
         sfxMixer.PlayOneShot(wordSFX[Random.Range(0, wordSFX.Length)]);
+    }
+
+    public IEnumerator WaitForResetScene()
+    {
+        Debug.Log("testing 2");
+        yield return new WaitForSeconds(3);
+        Debug.Log("testing 3");
+        SceneManager.LoadScene("KevinScene");
     }
 }

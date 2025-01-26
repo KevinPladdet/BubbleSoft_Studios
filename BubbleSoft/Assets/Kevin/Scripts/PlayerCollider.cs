@@ -13,7 +13,7 @@ public class PlayerCollider : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Bubble"))
         {
-
+            this.GetComponent<PlayerHealth>().TakeDamage(10);
             var bubble = collision.gameObject.GetComponent<BubbleBehaviour>();
             bubble.onDestroyBubble();
         }

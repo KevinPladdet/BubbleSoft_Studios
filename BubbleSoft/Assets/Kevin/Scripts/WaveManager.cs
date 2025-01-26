@@ -7,6 +7,7 @@ public class WaveManager : MonoBehaviour
 
     [SerializeField] private GameManager gm;
     [SerializeField] private BubbleSpawner bs;
+    [SerializeField] private PlayerHealth ph;
 
     public List<string> missionList = new List<string>();
     
@@ -46,7 +47,7 @@ public class WaveManager : MonoBehaviour
     private IEnumerator _EndOfRound()
     {
         gm.missionText.text = "Get ready for the next wave...";
-
+        ph.Heal();
 
         yield return new WaitForSeconds(4);
         gm.bubbleSpeedMultiplier += 0.02f;
