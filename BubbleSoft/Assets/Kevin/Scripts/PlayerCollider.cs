@@ -39,7 +39,7 @@ public class PlayerCollider : MonoBehaviour
 
     public void ResetCanShoot()
     {
-        Debug.Log("test"); // Animator transitions trigger not done
         germScript.canShoot = true;
+        germScript.ShootBullet();
     }
 }
