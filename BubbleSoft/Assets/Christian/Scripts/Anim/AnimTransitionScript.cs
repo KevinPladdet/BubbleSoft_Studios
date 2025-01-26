@@ -11,6 +11,10 @@ public class AnimTransitionScript : MonoBehaviour
     public GameObject Canvas;
     public GameObject MainMenu;
     public GameObject CanvasSlide;
+    public GameObject pannel1Text;
+    public GameObject pannel2Text;
+    public GameObject pannel3Text;
+    public GameObject pannel4Text;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,6 +30,7 @@ public class AnimTransitionScript : MonoBehaviour
     public void Pannel1()
     {
         pannel1.SetActive(true);
+        pannel1Text.SetActive(true);
 
     }
 
@@ -33,18 +38,21 @@ public class AnimTransitionScript : MonoBehaviour
     {
         pannel1.SetActive(false);
         pannel2.SetActive(true);
+        pannel2Text.SetActive(true);
     }
 
     public void Pannel3()
     {
         pannel2.SetActive(false);
         pannel3.SetActive(true);
+        pannel3Text.SetActive(true);
     }
 
     public void Pannel4()
     {
         pannel3.SetActive(false);
         pannel4.SetActive(true);
+        pannel4Text.SetActive(true);
     }
 
     public void Menu()

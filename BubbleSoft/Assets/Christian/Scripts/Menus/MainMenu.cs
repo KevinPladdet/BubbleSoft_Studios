@@ -17,11 +17,9 @@ public class MainMenu : MonoBehaviour
 
 
 
-    private VolumeManager AM;
 
     private void Start()
     {
-        AM = VolumeManager.Instance;
     }
 
     public void PlayGame()
