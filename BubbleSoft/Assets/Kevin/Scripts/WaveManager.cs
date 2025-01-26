@@ -18,7 +18,7 @@ public class WaveManager : MonoBehaviour
         }
     }
 
-    private void SelectMission()
+    public void SelectMission()
     {
         string nextObjective;
         do
@@ -28,7 +28,30 @@ public class WaveManager : MonoBehaviour
         gm.missionText.text = nextObjective;
         gm.missionText.color = new Color(0, 0, 0);
 
-        gm.stopSpawningBubbles = false;
-        StartCoroutine(bs.SpawnBubbles());
+        bs.SpawnLimitNumberOfBubbles();
+        // gm.stopSpawningBubbles = false;
+       // StartCoroutine(bs.SpawnBubbles());
+
+    }
+
+    public void updateTextSurvive()
+    {
+        gm.missionText.text = "Objective: Survive " + gm.currentWaveBubbles + " bubbles!";
+    }
+    public void EndOfRound()
+    {
+        StartCoroutine(_EndOfRound());
+    }
+
+    private IEnumerator _EndOfRound()
+    {
+        gm.missionText.text = "Get ready for the next wave...";
+
+
+        yield return new WaitForSeconds(4);
+        Debug.Log("After 2 seconds");
+        gm.bubbleSpeedMultiplier += 0.02f;
+        SelectMission();
+        updateTextSurvive();
     }
 }

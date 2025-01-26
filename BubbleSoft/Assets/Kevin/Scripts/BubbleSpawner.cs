@@ -14,7 +14,7 @@ public class BubbleSpawner : MonoBehaviour
 
     void Start()
     {
-        StartCoroutine(SpawnBubbles());
+       SpawnMultipleBubbles(20);
     }
 
     private void Update()
@@ -22,8 +22,22 @@ public class BubbleSpawner : MonoBehaviour
         // Spawn 10 bubbles at once
         if (Input.GetKeyDown(KeyCode.R))
         {
-            SpawnMultipleBubbles(bubblesAmount);
+            SpawnLimitNumberOfBubbles();
         }
+    }
+
+    public void SpawnLimitNumberOfBubbles()
+    {
+        for (int i = 0; i < bubblesAmount; i++)
+        {
+            randomAngle = Quaternion.Euler(0f, 0f, Random.Range(0, 360)) * Vector2.right * Random.Range(7, 13);
+            var bubble = Instantiate(bubblePrefab, randomAngle, Quaternion.identity, this.transform);
+            bubble.GetComponent<BubbleBehaviour>().bubbleConfig = bubbleConfigs[Random.Range(0, bubbleConfigs.Length)];
+
+        }
+        gm.totalBubbles += bubblesAmount;
+        gm.currentWaveBubbles += bubblesAmount;
+        this.bubblesAmount += 10;
     }
 
     public IEnumerator SpawnBubbles()
@@ -31,7 +45,7 @@ public class BubbleSpawner : MonoBehaviour
         while (!gm.stopSpawningBubbles)
         {
             yield return new WaitForSeconds(spawnFrequency);
-            randomAngle = Quaternion.Euler(0f, 0f, Random.Range(0, 360)) * Vector2.right * 7; // The 7 means that bubbles spawn at position 7,7 in a 360 degrees radius
+            randomAngle = Quaternion.Euler(0f, 0f, Random.Range(0, 360)) * Vector2.right * Random.Range(7, 13); // The 7 means that bubbles spawn at position 7,7 in a 360 degrees radius
             var bubble = Instantiate(bubblePrefab, randomAngle, Quaternion.identity, this.transform);
             bubble.GetComponent<BubbleBehaviour>().bubbleConfig = bubbleConfigs[Random.Range(0, bubbleConfigs.Length)];
             gm.totalBubbles += 1;
@@ -42,11 +56,13 @@ public class BubbleSpawner : MonoBehaviour
     {
         for (int i = 0; i < bubblesAmount; i++)
         {
-            randomAngle = Quaternion.Euler(0f, 0f, Random.Range(0, 360)) * Vector2.right * 11;
+            randomAngle = Quaternion.Euler(0f, 0f, Random.Range(0, 360)) * Vector2.right * Random.Range(7, 8);
             Instantiate(bubblePrefab, randomAngle, Quaternion.identity, this.transform);
-            gm.totalBubbles += bubblesAmount;
+
         }
-        Debug.Log("increase bubbles amount");
-        this.bubblesAmount += 5;
+        gm.totalBubbles += bubblesAmount;
+        gm.currentWaveBubbles += bubblesAmount;
+        //Debug.Log("increase bubbles amount");
+        //this.bubblesAmount += 5;
     }
 }

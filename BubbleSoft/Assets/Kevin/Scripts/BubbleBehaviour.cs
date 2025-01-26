@@ -16,6 +16,7 @@ public class BubbleBehaviour : MonoBehaviour
     private Transform playerPos;
     private GameManager gm;
     private AudioManager am;
+    private WaveManager ws;
     private bool enableSlowdown = false;
 
     public BubbleConfig bubbleConfig;
@@ -32,6 +33,9 @@ public class BubbleBehaviour : MonoBehaviour
         playerPos = GameObject.Find("Player").transform;
         gm = GameObject.Find("GameManager").GetComponent<GameManager>();
         am = GameObject.Find("AudioManager").GetComponent<AudioManager>();
+        ws = GameObject.Find("WaveManager").GetComponent<WaveManager>();
+
+        ws.updateTextSurvive();
 
         chainedBubbles = new List<BubbleBehaviour>();
         GetComponent<SpriteRenderer>().sprite = bubbleConfig.sprite;
@@ -62,16 +66,8 @@ public class BubbleBehaviour : MonoBehaviour
                 }
 
             }
-            am.RandomBubblePopSFX();
-            gm.poppedBubbles += 1;
 
-            if (gm.poppedBubbles == 50)
-            {
-                gm.stopSpawningBubbles = true;
-                gm.missionText.color = new Color(0, 255, 0);
-            }
-            
-            Destroy(this.gameObject);
+            onDestroyBubble();
         }
 
         transform.position = Vector2.MoveTowards(transform.position, playerPos.position, (bubbleSpeed * speedMultiplier * gm.bubbleSpeedMultiplier) * Time.deltaTime);
@@ -79,6 +75,21 @@ public class BubbleBehaviour : MonoBehaviour
         {
             bubbleSpeed -= 0.15f * Time.deltaTime;
         }
+    }
+
+    public void onDestroyBubble()
+    {
+        am.RandomBubblePopSFX();
+        gm.poppedBubbles += 1;
+        gm.currentWaveBubbles -= 1;
+        ws.updateTextSurvive();
+
+        if (gm.currentWaveBubbles <= 0)
+        {
+            ws.EndOfRound();
+        }
+
+        Destroy(this.gameObject);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     [Header("Other Values")]
     public float totalBubbles;
     public float poppedBubbles;
+    public int currentWaveBubbles;
     public bool stopSpawningBubbles;
 
     [Header("References")]

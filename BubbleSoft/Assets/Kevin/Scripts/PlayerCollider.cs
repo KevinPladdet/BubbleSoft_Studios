@@ -13,16 +13,9 @@ public class PlayerCollider : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Bubble"))
         {
-            gm.poppedBubbles += 1;
-            am.RandomBubblePopSFX();
 
-            if (gm.poppedBubbles == 50)
-            {
-                gm.stopSpawningBubbles = true;
-                gm.missionText.color = new Color(0, 255, 0);
-            }
-
-            Destroy(collision.gameObject);
+            var bubble = collision.gameObject.GetComponent<BubbleBehaviour>();
+            bubble.onDestroyBubble();
         }
     }
 
