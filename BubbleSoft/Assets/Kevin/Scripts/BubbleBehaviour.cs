@@ -23,6 +23,7 @@ public class BubbleBehaviour : MonoBehaviour
     [SerializeField] private List<BubbleBehaviour> chainedBubbles;
     [SerializeField] private bool isBeingDestroyed = false;
     [SerializeField] private float delayDestroyed = 0;
+    private int counterDelay = 0;
 
     void Start()
     {
