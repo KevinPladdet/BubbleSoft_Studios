@@ -32,9 +32,8 @@ public class typewriterUI_v2 : MonoBehaviour
 	public PauseMenu Pausemenu;
 	public TranslateScript translater;
 	public OptionsMenu optionsMenu;
-	public AudioSource audioSource1;
-	public AudioSource audioSource2;
-	public AudioSource audioSource3;
+	public AudioManager audioManager;
+
 
 	// Use this for initialization
 	void Awake()
@@ -197,19 +196,7 @@ public class typewriterUI_v2 : MonoBehaviour
 			}
 			tmpProText.text += c;
 			tmpProText.text += leadingChar;
-			x1 = Random.Range(1, 3);
-			if(x1 == 3)
-            {
-				audioSource1.Play();
-			}
-			else if(x1 == 2)
-            {
-				audioSource2.Play();
-			}
-			else if(x1 == 2)
-            {
-				audioSource3.Play();
-			}
+			audioManager.RandomWordSFX();
 			yield return new WaitForSeconds(timeBtwChars);
 		}
 

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class AnimTransitionScript : MonoBehaviour
 {
@@ -15,6 +16,9 @@ public class AnimTransitionScript : MonoBehaviour
     public GameObject pannel2Text;
     public GameObject pannel3Text;
     public GameObject pannel4Text;
+    public AudioSource audioSource1;
+    public AudioSource audioSource2;
+    public AudioSource audioSource3;
     // Start is called before the first frame update
     void Start()
     {
@@ -31,11 +35,13 @@ public class AnimTransitionScript : MonoBehaviour
     {
         pannel1.SetActive(true);
         pannel1Text.SetActive(true);
+        audioSource1.Play();
 
     }
 
     public void Pannel2()
     {
+        audioSource1.Stop();
         pannel1.SetActive(false);
         pannel2.SetActive(true);
         pannel2Text.SetActive(true);
@@ -43,6 +49,8 @@ public class AnimTransitionScript : MonoBehaviour
 
     public void Pannel3()
     {
+        audioSource1.Stop();
+        audioSource2.Play();
         pannel2.SetActive(false);
         pannel3.SetActive(true);
         pannel3Text.SetActive(true);
@@ -57,9 +65,19 @@ public class AnimTransitionScript : MonoBehaviour
 
     public void Menu()
     {
+        audioSource2.Stop();
+        audioSource3.Play();
+        SceneManager.LoadScene("MainMenu");
         pannel4.SetActive(false);
         CanvasSlide.SetActive(false);
         MainMenu.SetActive(true);
         Canvas.SetActive(true);
+        Time.timeScale = 0f;
+    }
+
+    public void musicmain()
+    {
+        audioSource2.Stop();
+        audioSource3.Play();
     }
 }

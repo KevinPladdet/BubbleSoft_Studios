@@ -13,6 +13,9 @@ public class PauseMenu : MonoBehaviour
     public TranslateScript text2;
     public TranslateScript text3;
     public TranslateScript text4;
+    public AudioSource audioSource3;
+    public AudioSource audioSource2;
+    public AudioSource BattleAudio;
 
     //[SerializeField] private GameObject healthBar;
     //[SerializeField] private GameObject objectives;
@@ -25,7 +28,7 @@ public class PauseMenu : MonoBehaviour
     }
     public void Start()
     {
-        Time.timeScale = 1f;
+        //Time.timeScale = 1f;
     }
 
     private bool isPaused = false;
@@ -53,13 +56,24 @@ public class PauseMenu : MonoBehaviour
 
     public void GoToGame()
     {
+        BattleAudio.Play();
+        audioSource3.Stop();
         Time.timeScale = 1f;
         canActivate = true;
         Debug.Log("Game opening, pause menu can activate");
     }
+    public void gomenu2()
+    {
+        
 
+        Time.timeScale = 0f;
+    }
     public void gomenu()
     {
+        BattleAudio.Stop();
+        audioSource3.Play();
+        audioSource2.Stop();
+
         Time.timeScale = 0f;
     }
     public void OnPause()
@@ -106,6 +120,8 @@ public class PauseMenu : MonoBehaviour
 
     public void GoToMainMenu()
     {
+        BattleAudio.Stop();
+        audioSource3.Play();
         PauseMenu1.SetActive(false);
         Canvas.SetActive(true);
         OptionsMenu.SetActive(false);
