@@ -5,7 +5,6 @@ using TMPro;
 
 public class GameManager : MonoBehaviour
 {
-
     [Header("Player Values")]
     public float currentHealth;
 

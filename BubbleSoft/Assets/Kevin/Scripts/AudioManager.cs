@@ -38,6 +38,7 @@ public class AudioManager : MonoBehaviour
     public IEnumerator WaitForResetScene()
     {
         yield return new WaitForSeconds(3);
+        Time.timeScale = 0f;
         SceneManager.LoadScene("MainScene");
     }
 }

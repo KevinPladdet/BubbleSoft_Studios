@@ -11,17 +11,14 @@ public class Bullet : MonoBehaviour
     public ColorType type;
 
     [SerializeField] private SpriteRenderer spriteRenderer;
-
-
-    // Start is called before the first frame update
+    
     void Start()
     {
         spriteRenderer.sprite = bulletConfig.sprite;
         type = bulletConfig.type;
         transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
     }
-
-    // Update is called once per frame
+    
     void Update()
     {
         Vector3 position = Camera.main.WorldToViewportPoint(transform.position);

@@ -66,13 +66,8 @@ public class AnimTransitionScript : MonoBehaviour
     public void Menu()
     {
         audioSource2.Stop();
-        audioSource3.Play();
-        SceneManager.LoadScene("KevinScene");
-        pannel4.SetActive(false);
-        CanvasSlide.SetActive(false);
-        MainMenu.SetActive(true);
-        Canvas.SetActive(true);
         Time.timeScale = 0f;
+        SceneManager.LoadScene("MainScene");
     }
 
     public void musicmain()
