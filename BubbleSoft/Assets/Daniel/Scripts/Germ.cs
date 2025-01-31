@@ -56,7 +56,7 @@ public class Germ : MonoBehaviour
         buscript.bulletConfig = nextBullet;
 
 
-        nextBullet = germ.bullets[Random.Range(0, 3)];
+        nextBullet = germ.bullets[Random.Range(0, 5)];
         ammoDisplay.sprite = nextBullet.sprite;
     }
 

@@ -39,8 +39,7 @@ public class PlayerHealth : MonoBehaviour
             currentHealth = 0;
             healthBar.SetHealth(currentHealth);
             am.PlaySFX(am.gameOverSFX); // PUT GAME OVER SOUND HERE
-            //StartCoroutine(am.WaitForResetScene());
-            SceneManager.LoadScene("KevinScene");
+            StartCoroutine(am.WaitForResetScene());
             //player.SetActive(false);
         }
         else
