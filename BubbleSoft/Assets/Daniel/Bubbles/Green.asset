@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Green
   m_EditorClassIdentifier: 
   sprite: {fileID: 1902094688, guid: 12301a56fd389f649a3ff1bd12c2ce53, type: 3}
+  spriteOnHit: {fileID: 0}
   type: 4
   health: 1
   damage: 1

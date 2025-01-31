@@ -92,6 +92,29 @@ public class BubbleBehaviour : MonoBehaviour
         Destroy(this.gameObject);
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Bullet"))
+        {
+            Destroy(collision.gameObject);
+
+            health -= 1;
+
+            if (health == 1)
+            {
+                GetComponent<SpriteRenderer>().sprite = bubbleConfig.spriteOnHit;
+            }
+            else if (health < 1)
+            {
+                counterDelay = 0;
+                Bullet bullet = collision.gameObject.GetComponent<Bullet>();
+                bool canTriggerChain = (int)bullet.bulletConfig.type == (int)bubbleConfig.type;
+                destroyBubble(canTriggerChain, true);
+            }
+
+        }
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         //Debug.Log($"Collision started with: {collision.gameObject.name}");
@@ -104,29 +127,7 @@ public class BubbleBehaviour : MonoBehaviour
             {
                 chainedBubbles.Add(collisionObject.GetComponent<BubbleBehaviour>());
             }
-                
-
-        } else if (collisionObject.tag == "Bullet")
-        {
-            Destroy(collisionObject);
-
-            health -= 1;
-
-            if (health == 1)
-            {
-                GetComponent<SpriteRenderer>().sprite = bubbleConfig.spriteOnHit;
-            }
-            else if (health < 1)
-            {
-                counterDelay = 0;
-                Bullet bullet = collisionObject.GetComponent<Bullet>();
-                bool canTriggerChain = (int)bullet.bulletConfig.type == (int)bubbleConfig.type;
-                destroyBubble(canTriggerChain, true);
-            }
-
-        }
-
-
+        } 
     }
 
     private void OnCollisionExit2D(Collision2D collision)
