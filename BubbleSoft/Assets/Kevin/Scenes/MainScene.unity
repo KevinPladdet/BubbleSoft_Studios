@@ -70645,9 +70645,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
-  currentHealth: 0
   healthBar: {fileID: 274184039}
+  gm: {fileID: 2031916711}
   am: {fileID: 834600536}
+  germScript: {fileID: 4200020778740108844}
   player: {fileID: 1788589657}
 --- !u!1 &1788644965
 GameObject:
@@ -81944,6 +81945,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11f508575729c294cb13fc49dd2604b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentHealth: 0
   bubbleSpeedMultiplier: 1
   totalBubbles: 0
   poppedBubbles: 0

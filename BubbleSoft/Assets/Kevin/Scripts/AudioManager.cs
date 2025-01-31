@@ -37,9 +37,7 @@ public class AudioManager : MonoBehaviour
 
     public IEnumerator WaitForResetScene()
     {
-        Debug.Log("testing 2");
         yield return new WaitForSeconds(3);
-        Debug.Log("testing 3");
         SceneManager.LoadScene("MainScene");
     }
 }

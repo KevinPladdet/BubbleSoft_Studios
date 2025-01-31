@@ -28,6 +28,9 @@ public class BubbleBehaviour : MonoBehaviour
     private int counterDelay = 0;
     private bool chainReactionTriggered = false;
 
+    private bool onlyOnce = false;
+    private float fadeDuration = 2f;
+
     void Start()
     {
         playerPos = GameObject.Find("Player").transform;
@@ -52,7 +55,7 @@ public class BubbleBehaviour : MonoBehaviour
     
     void Update()
     {
-       if (isBeingDestroyed && delayDestroyed > 0)
+        if (isBeingDestroyed && delayDestroyed > 0)
         {
             delayDestroyed = delayDestroyed - Time.deltaTime * 1000;
             
@@ -74,6 +77,12 @@ public class BubbleBehaviour : MonoBehaviour
         if (!enableSlowdown && bubbleSpeed >= minSpeed)
         {
             bubbleSpeed -= 0.15f * Time.deltaTime;
+        }
+
+        if (gm.currentHealth == 0 && !onlyOnce)
+        {
+            StartCoroutine(FadeOutAndDestroy());
+            onlyOnce = true;
         }
     }
 
@@ -148,4 +157,21 @@ public class BubbleBehaviour : MonoBehaviour
         delayDestroyed = counterDelay * destroyDelayInMs;
     }
 
+    private IEnumerator FadeOutAndDestroy()
+    {
+        Color color = GetComponent<SpriteRenderer>().color;
+        float startAlpha = color.a;
+        float fadeSpeed = startAlpha / fadeDuration;
+
+        // Gradually fade the alpha to 0
+        while (color.a > 0)
+        {
+            color.a -= fadeSpeed * Time.deltaTime;
+            GetComponent<SpriteRenderer>().color = color;
+
+            yield return null;
+        }
+
+        Destroy(gameObject);
+    }
 }
