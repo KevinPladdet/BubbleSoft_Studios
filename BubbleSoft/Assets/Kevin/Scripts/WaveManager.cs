@@ -11,13 +11,13 @@ public class WaveManager : MonoBehaviour
 
     public List<string> missionList = new List<string>();
     
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.T))
-        {
-            SelectMission();
-        }
-    }
+    //void Update()
+    //{
+    //    if (Input.GetKeyDown(KeyCode.T))
+    //    {
+    //        SelectMission();
+    //    }
+    //}
 
     public void SelectMission()
     {
@@ -39,6 +39,7 @@ public class WaveManager : MonoBehaviour
     {
         gm.missionText.text = "Objective: Survive " + gm.currentWaveBubbles + " bubbles!";
     }
+
     public void EndOfRound()
     {
         StartCoroutine(_EndOfRound());

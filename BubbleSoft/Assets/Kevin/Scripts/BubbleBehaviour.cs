@@ -28,7 +28,7 @@ public class BubbleBehaviour : MonoBehaviour
     private int counterDelay = 0;
     private bool chainReactionTriggered = false;
 
-    private bool onlyOnce = false;
+    private bool playerIsDeath = false;
     private float fadeDuration = 2f;
 
     void Start()
@@ -38,7 +38,10 @@ public class BubbleBehaviour : MonoBehaviour
         am = GameObject.Find("AudioManager").GetComponent<AudioManager>();
         ws = GameObject.Find("WaveManager").GetComponent<WaveManager>();
 
-        ws.updateTextSurvive();
+        if(!playerIsDeath)
+        {
+            ws.updateTextSurvive();
+        }
 
         chainedBubbles = new List<BubbleBehaviour>();
         GetComponent<SpriteRenderer>().sprite = bubbleConfig.sprite;
@@ -79,19 +82,22 @@ public class BubbleBehaviour : MonoBehaviour
             bubbleSpeed -= 0.15f * Time.deltaTime;
         }
 
-        if (gm.currentHealth == 0 && !onlyOnce)
+        if (gm.currentHealth == 0 && !playerIsDeath)
         {
             StartCoroutine(FadeOutAndDestroy());
-            onlyOnce = true;
+            playerIsDeath = true;
         }
     }
 
     public void onDestroyBubble()
     {
-        am.RandomBubblePopSFX();
-        gm.poppedBubbles += 1;
-        gm.currentWaveBubbles -= 1;
-        ws.updateTextSurvive();
+        if (!playerIsDeath)
+        {
+            am.RandomBubblePopSFX();
+            gm.poppedBubbles += 1;
+            gm.currentWaveBubbles -= 1;
+            ws.updateTextSurvive();
+        }
 
         if (gm.currentWaveBubbles <= 0)
         {

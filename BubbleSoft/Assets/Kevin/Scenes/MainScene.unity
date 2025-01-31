@@ -10594,7 +10594,7 @@ RectTransform:
   m_GameObject: {fileID: 274184037}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.25, y: 1.25, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1234127922}
@@ -36920,7 +36920,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'HP:'
+  m_text: HP
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 213d54d3b59fae24ebd813291f60fc09, type: 2}
   m_sharedMaterial: {fileID: 5504511176837846978, guid: 213d54d3b59fae24ebd813291f60fc09, type: 2}

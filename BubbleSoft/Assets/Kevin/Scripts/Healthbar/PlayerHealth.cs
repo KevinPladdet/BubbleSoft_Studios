@@ -14,22 +14,12 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private AudioManager am;
     [SerializeField] private Germ germScript;
     [SerializeField] private GameObject player;
-    //private float elapsedTime = 0;
 
     void Start()
 	{
 		gm.currentHealth = maxHealth;
 		healthBar.SetMaxHealth(maxHealth);
 	}
-
-	//void Update()
-	//{
- //       ////elapsedTime += Time.deltaTime;
- //       //if (currentHealth == 100)
- //       //{
-
- //       //}
- //   }
 
     public void TakeDamage(int damage)
     {
@@ -58,11 +48,28 @@ public class PlayerHealth : MonoBehaviour
     public void Heal()
     {
         am.PlaySFX(am.healSFX);
-        while (gm.currentHealth < 100)
+        StartCoroutine(HealOverTime(2f)); // Heal to 100 over 2 seconds
+    }
+
+    // Loops healing until currentHealth is 100
+    private IEnumerator HealOverTime(float duration)
+    {
+        float elapsedTime = 0f;
+        float startHealth = gm.currentHealth;
+
+        while (elapsedTime < duration)
         {
-            gm.currentHealth += 1;
+            elapsedTime += Time.deltaTime;
+            gm.currentHealth = Mathf.RoundToInt(Mathf.Lerp(startHealth, 100, elapsedTime / duration));
             healthBar.SetHealth(gm.currentHealth);
+
+            if (gm.currentHealth >= 100)
+            {
+                gm.currentHealth = 100;
+                healthBar.SetHealth(gm.currentHealth);
+                yield break;
+            }
+            yield return null;
         }
-        healthBar.SetHealth(100);
     }
 }

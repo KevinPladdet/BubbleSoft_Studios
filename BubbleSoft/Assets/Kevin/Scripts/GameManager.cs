@@ -19,4 +19,15 @@ public class GameManager : MonoBehaviour
 
     [Header("References")]
     public TextMeshProUGUI missionText;
+
+    private void Awake()
+    {
+        Time.timeScale = 0f;    
+    }
+
+    private void Update()
+    {
+        if (currentHealth == 0)
+        missionText.text = "Game Over!";
+    }
 }
