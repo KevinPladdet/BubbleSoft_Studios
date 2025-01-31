@@ -6,6 +6,7 @@ using UnityEngine;
 public class BubbleConfig : ScriptableObject
 {
     public Sprite sprite;
+    public Sprite spriteOnHit;
     public ColorType type;
     public int health;
     public int damage;

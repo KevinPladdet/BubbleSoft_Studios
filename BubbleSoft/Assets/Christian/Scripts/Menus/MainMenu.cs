@@ -15,11 +15,9 @@ public class MainMenu : MonoBehaviour
 
     [SerializeField] private GameObject onHoverText;
 
-
-
-
     private void Start()
     {
+        Debug.Log(this.gameObject);
     }
 
     public void PlayGame()
@@ -33,11 +31,6 @@ public class MainMenu : MonoBehaviour
         Time.timeScale = 1f;
         pauseMenu.canActivate = true;
         Cursor.lockState = CursorLockMode.Locked;
-    }
-
-    public void QuitGame()
-    {
-        Application.Quit();
     }
 
     public void NewGame()

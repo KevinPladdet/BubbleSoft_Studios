@@ -47,15 +47,14 @@ public class PauseMenu : MonoBehaviour
             Debug.Log("Opening Pause Menu");
         }
 
-        if(Time.timeScale == 1f)
-        {
-            Debug.Log("Time is playing");
-        }
-        else if (Time.timeScale == 0f)
-        {
-            Debug.Log("Time Stopped");
-        }
-        
+        //if(Time.timeScale == 1f)
+        //{
+        //    Debug.Log("Time is playing");
+        //}
+        //else if (Time.timeScale == 0f)
+        //{
+        //    Debug.Log("Time Stopped");
+        //}
     }
 
     public void GoToGame()
@@ -120,7 +119,7 @@ public class PauseMenu : MonoBehaviour
 
     public void GoToMainMenu()
     {
-        SceneManager.LoadScene("KevinScene");
+        SceneManager.LoadScene("MainScene");
         //BattleAudio.Stop();
         //audioSource3.Play();
         //PauseMenu1.SetActive(false);

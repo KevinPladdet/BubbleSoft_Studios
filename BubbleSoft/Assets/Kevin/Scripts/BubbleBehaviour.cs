@@ -112,7 +112,11 @@ public class BubbleBehaviour : MonoBehaviour
 
             health -= 1;
 
-            if (health < 1)
+            if (health == 1)
+            {
+                GetComponent<SpriteRenderer>().sprite = bubbleConfig.spriteOnHit;
+            }
+            else if (health < 1)
             {
                 counterDelay = 0;
                 Bullet bullet = collisionObject.GetComponent<Bullet>();

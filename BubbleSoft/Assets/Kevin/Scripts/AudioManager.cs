@@ -40,6 +40,6 @@ public class AudioManager : MonoBehaviour
         Debug.Log("testing 2");
         yield return new WaitForSeconds(3);
         Debug.Log("testing 3");
-        SceneManager.LoadScene("KevinScene");
+        SceneManager.LoadScene("MainScene");
     }
 }

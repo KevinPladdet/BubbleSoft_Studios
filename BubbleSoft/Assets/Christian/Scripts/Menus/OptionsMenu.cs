@@ -53,4 +53,9 @@ public class OptionsMenu : MonoBehaviour
         //player.GetComponent<PlayerController>().sensitivity = sens;
         sensValueForDisplay = sens;
     }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
 }

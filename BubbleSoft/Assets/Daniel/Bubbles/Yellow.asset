@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Yellow
   m_EditorClassIdentifier: 
   sprite: {fileID: -236085636, guid: 12301a56fd389f649a3ff1bd12c2ce53, type: 3}
+  spriteOnHit: {fileID: 715387021, guid: 12301a56fd389f649a3ff1bd12c2ce53, type: 3}
   type: 1
   health: 2
   damage: 1
