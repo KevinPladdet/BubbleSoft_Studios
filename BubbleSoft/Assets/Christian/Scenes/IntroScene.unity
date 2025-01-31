@@ -46902,6 +46902,8 @@ MonoBehaviour:
   audioSource3: {fileID: 1109415624}
   audioSource2: {fileID: 704150035}
   BattleAudio: {fileID: 800726604}
+  healthBar: {fileID: 0}
+  missionText: {fileID: 0}
   canActivate: 0
 --- !u!224 &1200512863
 RectTransform:
